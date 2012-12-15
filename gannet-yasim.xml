@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<!-- Fairey Gannet    - 2012 Emmanuel BARANGER with Melchior's script
+   
+     sources          : http://en.wikipedia.org/wiki/Fairey_Gannet
+
+     wingspan         : 54 ft 4 in ( 16.56 m    )
+     length           : 43 ft      ( 13.00 m    )
+     height           : 13 ft 9 in (  4.19 m    )
+     max speed        : 269.98 kt  (   500 km/h )
+     empty weight     : 15069 lb   (  6835 kg   )
+     engine           : 1 Armstrong Siddeley Double Mamba ASMD 1 turboprop ( 2950 hp )
+-->
+
+<airplane mass="15069" >
+
+  <approach speed="80" aoa="7">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.2"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="1.0"/>
+    <control-setting axis="/controls/engines/engine[0]/propeller-pitch" value="0.8"/>
+    <control-setting axis="/controls/gear/gear-down" value="1"/>
+    <control-setting axis="/controls/flight/flaps" value="1"/>
+    <solve-weight idx="0" weight="180"/>
+  </approach>
+  
+  <cruise speed="250" alt="25000" >
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.7"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="0.8" />
+    <control-setting axis="/controls/engines/engine[0]/propeller-pitch" value="1"/>
+    <control-setting axis="/controls/gear/gear-down" value="0"/>
+    <control-setting axis="/controls/flight/flaps" value="0"/>
+    <solve-weight idx="0" weight="180"/>
+  </cruise>
+
+  <cockpit x="3.84129" y="0" z="0.99577"/>
+
+  <fuselage ax=" 5.77159" ay="0" az="-0.14296" bx=" 4.42655" by="0" bz="-0.084960" width="1.330" taper="0.7" midpoint="1.0" cy="2" cx="2"/>
+  <fuselage ax=" 4.42655" ay="0" az="-0.08496" bx="-0.53303" by="0" bz="-0.084960" width="1.352" taper="1.0" midpoint="1.0" cy="2" cx="2"/>
+  <fuselage ax="-0.53303" ay="0" az="-0.08496" bx="-5.37935" by="0" bz=" 0.003035" width="1.330" taper="0.2" midpoint="0.0" cy="2" cx="2"/>
+
+  <fuselage ax=" 5.77159" ay="0" az="-0.56765" bx=" 4.42655" by="0" bz="-0.899650" width="1.330" taper="0.7" midpoint="1.0" cy="2" cx="2"/>
+  <fuselage ax=" 4.42655" ay="0" az="-0.89965" bx="-0.53303" by="0" bz="-0.899650" width="1.352" taper="1.0" midpoint="1.0" cy="2" cx="2"/>
+  <fuselage ax="-0.53303" ay="0" az="-0.89965" bx="-5.37935" by="0" bz="-0.294460" width="1.330" taper="0.2" midpoint="0.0" cy="2" cx="2"/>
+ 
+  <mstab x="1.22532" y="0.274" z="-0.19545" 
+         chord="3.960" 
+         length="2.580" 
+         taper="0.75" 
+         dihedral="-7" 
+         sweep="-4"
+         camber="0.06">
+         <stall aoa="20" width="1" peak="1.5"/>
+  </mstab>
+    
+  <wing x="1.40573" y="2.82792" z="-0.50752" 
+        chord="2.966" 
+        length="5.487" 
+        taper="0.65" 
+        dihedral="5" 
+        sweep="-3.5"
+        camber="0.06">
+        <stall aoa="20" width="1" peak="1.5"/>
+        <flap0 start="-0.37" end="0.45" lift="1.2" drag="1.25"/>
+        <flap1 start=" 0.45" end="0.97" lift="1.2" drag="1.1"/>
+
+        <control-input axis="/controls/flight/flaps" control="FLAP0" invert="true"/>
+        <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
+        <control-input axis="/controls/flight/aileron-trim" control="FLAP1" split="true"/>
+
+        <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+        <control-output control="FLAP1" side="left" prop="surface-positions/left-aileron-pos-norm"/>
+        <control-output control="FLAP1" side="right" prop="surface-positions/right-aileron-pos-norm"/>
+  </wing>
+  
+  <hstab x="-4.69586" y="0" z="0.76205" 
+         chord="2.504" 
+         length="2.935" 
+         taper="0.54"
+         sweep="5.5"> 
+         <stall aoa="18" width="1" peak="1.5"/>
+         <flap0 start="0.14" end="1" lift="1.5" drag="1"/>
+
+         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
+         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+  </hstab>
+
+  <vstab x="-4.461" y="0" z="-0.355" 
+         chord="3.418" 
+         length="3.200" 
+         taper="0.30" 
+         sweep="20">
+         <stall aoa="16" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.75" drag="1.35"/>
+
+         <control-input axis="/controls/flight/rudder" square="true" control="FLAP0" invert="true"/>
+         <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"  min="1" max="-1"/>
+  </vstab>
+
+  <!-- Engines   source            : http://en.wikipedia.org/wiki/Armstrong_Siddeley_Double_Mamba
+
+                 name              : Armstrong Siddeley Double Mamba
+                 type              : Turboprop engine
+                 power cruise      : 2960 hp
+                 weight            : 2170 lb  ( 984 kg )
+  -->
+  <propeller x="3.80345" y="0" z="-0.16025"
+             radius="2.048"
+             mass="2170"
+             moment="15"
+             cruise-speed="250"
+             cruise-alt="25000"
+             cruise-power="2800"
+             cruise-rpm="2500"
+             takeoff-power="3000"
+             takeoff-rpm="2750"
+             gear-ratio="0.5"
+             fine-stop="0.4"
+             coarse-stop="6"
+             contra="1">
+             <actionpt x="6.20227" y="0.0" z="-0.16025"/>
+             <piston-engine eng-rpm="2750"
+                            eng-power="2950"
+                            displacement="2240"
+                            compression="6"/>
+             <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle"/>
+             <control-input control="STARTER" axis="/controls/engines/engine[0]/starter"/>
+             <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos"/>
+             <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture"/>
+             <control-input control="ADVANCE" axis="/controls/engines/engine[0]/propeller-pitch"/>
+  </propeller>
+
+  <!-- 4.21425 0.0000 -0.16025 # 6.01425 0.0000 -0.16025 -->
+  
+  <!-- Tail wheel; has castering selectable by a wheel lock -->
+  <gear x="5.5739" y="0" z="-2.6578"
+        compression="0.28"
+        sfric="0.3"
+        dfric="0.5"
+        initial-load="0">
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+
+        <control-speed control="EXTEND" transition-time="5"/>
+
+        <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
+  </gear>
+
+  <!-- left main -->
+  <gear x="1.4995" y=" 2.1692" z="-2.4867" 
+        compression="0.4"
+        retract-time="5"
+        spring="0.8"
+        damp="4.2"
+        sfric="0.6"
+        dfric="0.8"
+        initial-load="0"
+        upx="0" upy="-0.07" upz="1">
+        <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+
+        <control-speed control="EXTEND" transition-time="4.9"/>
+
+        <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
+  </gear>
+
+  <!-- right main -->
+  <gear x="1.4995" y="-2.1692" z="-2.4867" 
+        compression="0.4"
+        retract-time="5"
+        spring="0.8"
+        damp="4.2"
+        sfric="0.6"
+        dfric="0.8"
+        initial-load="0"
+        upx="0" upy="0.07" upz="1">
+        <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+
+        <control-speed control="EXTEND" transition-time="5.2"/>
+
+        <control-output control="EXTEND" prop="/gear/gear[2]/position-norm"/>
+  </gear>
+
+  <!-- Fuel  -->  
+  <tank x="1.883" y=" 2.406" z="-0.384" capacity="410"/>
+  <tank x="2.133" y=" 0.000" z="-0.436" capacity="256"/>
+  <tank x="1.883" y="-2.406" z="-0.384" capacity="410"/>
+
+  <weight x="3.93" y="0" z="0.57" mass-prop="/sim/weight[0]/weight-lb"/>
+
+  <!-- Crosse d'appontage -->
+  <hook x="-4.78539" y="0" z="-0.65539" length="1.938" down-angle="65" up-angle="-10">
+        <control-input axis="/controls/gear/tailhook" control="HEXTEND"/>
+        <control-speed control="HEXTEND" transition-time="4"/>
+  </hook>
+
+  <!-- Displacment mass-->
+  <ballast x=" 5" y="0" z="-2.16" mass="4500"/>
+  <ballast x="-5" y="0" z="2" mass="-1000"/>
+  
+</airplane>

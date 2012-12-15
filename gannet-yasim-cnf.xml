@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<PropertyList include="gannet-base.xml">
+
+  <sim>
+
+    <description>Fairey Gannet (YASim)</description>
+    <flight-model>yasim</flight-model>
+    <aero>gannet-yasim</aero>
+
+  </sim>
+  
+</PropertyList>
