@@ -20,6 +20,15 @@
     </binding>
   </key>
  
+  <key n="10">
+    <name>Ctrl-j</name>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/signal</property>
+      <value>true</value>
+    </binding>
+  </key>
+
   <key n="69">
     <name>E</name>
     <desc>Wings</desc>

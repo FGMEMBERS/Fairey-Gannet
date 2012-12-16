@@ -1,92 +1,43 @@
-<?xml version="1.0" encoding="ISO-8859-1"?> 
+<?xml version="1.0" encoding="ISO-8859-1"?>
  
 <PropertyList>
 
   <fx>
  
+    <!-- Moteur 1 -->
     <crank>
       <name>engstart</name>
-      <path>Sounds/engstart.wav</path>
-      <property>/engines/engine/cranking</property>
-      <volume>
-       <offset>-0.4</offset>
+      <path>Aircraft/Fairey-Gannet/Sounds/starter.wav</path>
+      <property>/engines/engine[0]/cranking</property>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>0.5</min>
+        <max>1.0</max>
+      </volume>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
       </volume>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </crank>
 
-    <crank>
-      <name>crank</name>
-      <mode>looped</mode>
-      <path>Aircraft/Fairey-Gannet/Sounds/griffon_starter.wav</path>
-      <condition>
-        <property>/engines/engine/cranking</property>
-        <not>
-          <property>/engines/engine/running</property>
-        </not>
-      </condition>
-      <volume>
-        <offset>-0.5</offset>
-      </volume>
-      <pitch>
-        <property>/engines/engine/cranking</property>
-        <factor>1.0</factor>
-      </pitch>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </crank>
-
-    <crank>
-      <name>cough</name>
-      <path>Aircraft/Fairey-Gannet/Sounds/griffon_startup.wav</path>
-      <property>/engines/engine/running</property>
-      <volume>
-        <offset>-0.50</offset>
-      </volume>
-      <pitch>
-        <property>/engines/engine/running</property>
-        <factor>1.0</factor>
-      </pitch>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </crank>
-  
     <engine>
       <name>engine</name>
       <mode>looped</mode>
-      <path>Aircraft/Fairey-Gannet/Sounds/griffon_rpm1.wav</path>
-      <condition>
-        <property>/engines/engine/running</property>
-        <less-than>
-        <property>/engines/engine/rpm</property>
-        <value>5000</value>
-        </less-than>
-      </condition>
-      <volume>
-        <property>/sim/current-view/internal</property>
-        <offset>1.0</offset>
-        <factor>-0.6</factor>
-      </volume>
-      <volume>
-        <property>/engines/engine/mp-inhg</property>
-        <offset>0.0</offset>
-        <factor>0.025</factor>  
-        <min>1.0</min>
-        <max>3.0</max>
-      </volume>
-      <volume>
-        <property>/engines/engine/rpm</property>
-        <factor>0.00033</factor>
-        <min>0.2</min>
+      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
+      <property>/engines/engine[0]/running</property>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>0.5</min>
         <max>1.0</max>
-        <offset>0.0</offset>
       </volume>
-      <pitch>
-        <property>/engines/engine/rpm</property>
-        <factor>0.00033</factor>
-        <min>0.0</min>
+      <volume> 
+        <factor>1.2</factor>
         <max>1.0</max>
-      </pitch>
+      </volume>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </engine>
@@ -94,38 +45,110 @@
     <engine>
       <name>enginerun</name>
       <mode>looped</mode>
-      <path>Sounds/wasp.wav</path>
-      <condition>
-        <property>/engines/engine/running</property>
-        <greater-than>
-        <property>/engines/engine/rpm</property>
-        <value>400</value>
+      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
+      <condition> 
+        <property>/engines/engine[0]/running</property>
+        <less-than> 
+          <property>/engines/engine[0]/rpm</property>
+          <value>900</value>
+        </less-than>
+        <greater-than> 
+          <property>/engines/engine[0]/rpm</property>
+          <value>150</value>
         </greater-than>
       </condition>
-      <volume>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>1.0</min>
+        <max>1.5</max>
+      </volume>
+      <volume> 
         <property>/sim/current-view/internal</property>
         <offset>1.0</offset>
-        <factor>-0.6</factor>
+        <factor>-0.4</factor>
       </volume>
-      <volume>
-        <property>/engines/engine/mp-inhg</property>
-        <offset>0.0</offset>
-        <factor>0.025</factor>  
-        <min>1.0</min>
-        <max>3.0</max>
-      </volume>
-      <volume>
-        <property>/engines/engine/rpm</property>
-        <factor>0.00033</factor>
-        <min>0.0</min>
-        <max>1.00</max>
-        <offset>0.0</offset>
-      </volume>
-      <pitch>
-        <property>/engines/engine/rpm</property>
-        <factor>0.00033</factor>
-        <min>0.0</min>
+      <pitch> 
+        <property>/engines/engine[0]/rpm</property>
+        <factor>0.0009496</factor>
+        <min>0.6</min>
+        <max>2.0</max>
+        <offset>0</offset>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+
+    <!-- Moteur 2 -->
+    <crank>
+      <name>engstart</name>
+      <path>Aircraft/Fairey-Gannet/Sounds/starter.wav</path>
+      <property>/engines/engine[1]/cranking</property>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>0.5</min>
         <max>1.0</max>
+      </volume>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </crank>
+
+    <engine>
+      <name>engine</name>
+      <mode>looped</mode>
+      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
+      <property>/engines/engine[1]/running</property>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>0.5</min>
+        <max>1.0</max>
+      </volume>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+
+    <engine>
+      <name>enginerun</name>
+      <mode>looped</mode>
+      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
+      <condition> 
+        <property>/engines/engine[1]/running</property>
+        <less-than> 
+          <property>/engines/engine[1]/rpm</property>
+          <value>900</value>
+        </less-than>
+        <greater-than> 
+          <property>/engines/engine[1]/rpm</property>
+          <value>150</value>
+        </greater-than>
+      </condition>
+      <volume> 
+        <property>/orientation/alpha-deg</property>
+        <type>log</type>
+        <min>1.0</min>
+        <max>1.5</max>
+      </volume>
+      <volume> 
+        <property>/sim/current-view/internal</property>
+        <offset>1.0</offset>
+        <factor>-0.4</factor>
+      </volume>
+      <pitch> 
+        <property>/engines/engine[1]/rpm</property>
+        <factor>0.0009496</factor>
+        <min>0.6</min>
+        <max>2.0</max>
+        <offset>0</offset>
       </pitch>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
@@ -135,14 +158,15 @@
       <name>rumble</name>
       <mode>looped</mode>
       <path>Sounds/rumble.wav</path>
-      <condition>
-        <or>
+      <condition> 
+        <or> 
           <property>/gear/gear[0]/wow</property>
           <property>/gear/gear[1]/wow</property>
           <property>/gear/gear[2]/wow</property>
         </or>
+        <property>/sim/current-view/internal</property>
       </condition>
-      <volume>
+      <volume> 
         <property>/velocities/airspeed-kt</property>
         <type>log</type>
         <factor>0.25</factor>
@@ -154,7 +178,7 @@
     <gear>
       <name>gear</name>
       <mode>in-transit</mode>
-      <path>Sounds/gear.wav</path>
+      <path>Aircraft/Fairey-Gannet/Sounds/gear-up.wav</path>
       <property>/gear/gear[0]/position-norm</property>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
@@ -207,27 +231,27 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </squeal>
-  
+ 
     <flap>
       <name>flaps</name>
       <mode>in-transit</mode>
-      <path>Sounds/flaps.wav</path>
+      <path>Aircraft/Fairey-Gannet/Sounds/flaps.wav</path>
       <property>/surface-positions/flap-pos-norm</property>
       <volume>
-        <factor>0.15</factor>
+        <factor>0.2</factor>
       </volume>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </flap>
-  
+
     <wind>
       <name>wind</name>
       <mode>looped</mode>
-      <path>Sounds/wind.wav</path>
+      <path>Aircraft/Fairey-Gannet/Sounds/wind.wav</path>
       <property>/velocities/airspeed-kt</property>
       <volume>
         <property>/velocities/airspeed-kt</property>
-        <factor>0.002</factor>
+        <factor>0.0025</factor>
         <min>0.00</min>
         <max>0.25</max>
       </volume>
@@ -240,125 +264,78 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </wind>
-   
-    <wind-gear>
-      <name>wind</name>
+ 
+    <stall>
+      <name>stall</name>
       <mode>looped</mode>
-      <path>Sounds/wind.wav</path>
-      <property>/gear/gear[0]/position-norm</property>
+      <path>Sounds/stall.wav</path>
+      <property>/sim/alarms/stall-warning</property>
       <volume>
-        <property>/velocities/airspeed-kt</property>
-        <factor>0.002</factor>
-        <min>0.00</min>
-        <max>0.25</max>
+        <property>/sim/alarms/stall-warning</property>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </stall>
+  
+    <door>
+      <name>Crew door</name>
+      <path>Sounds/door_close.wav</path>
+      <condition>
+        <equals>
+          <property>/instrumentation/doors/crew/position-norm</property>
+          <value>0.0</value>
+        </equals>
+      </condition>
+      <volume>
+        <factor>0.4</factor>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </door>
+
+    <door>
+      <name>Passenger door</name>
+      <path>Sounds/door_close.wav</path>
+      <condition>
+        <equals>
+          <property>/instrumentation/doors/passenger/position-norm</property>
+          <value>0.0</value>
+        </equals>
+      </condition>
+      <volume>
+        <factor>0.4</factor>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </door>
+
+    <rain>
+      <name>rain</name>
+      <mode>looped</mode>
+      <path>Aircraft/Fairey-Gannet/Sounds/rain_canopy.wav</path>
+      <condition>
+        <greater-than>
+          <property>/environment/metar/rain-norm</property>
+          <value>0.2</value>
+        </greater-than>
+      </condition>
+      <volume>
+        <property>/environment/metar/rain-norm</property>
+        <factor>1.00</factor>
+        <offset>0.00</offset>
+        <min>0.4</min>
+        <max>0.9</max>
       </volume>
       <pitch>
         <property>/velocities/airspeed-kt</property>
-        <factor>0.01</factor>
-        <offset>0.5</offset>
-        <max>1.0</max>
+        <factor>0.001</factor>
+        <offset>1.0</offset>
       </pitch>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
-    </wind-gear>
-  
-    <guns>
-      <name>gunfire</name>
-      <mode>looped</mode>
-      <path>Aircraft/Fairey-Gannet/Sounds/gunfire_1.wav</path>
-      <condition>
-        <property>controls/armament/trigger</property>
-        <property>ai/submodels/submodel/count</property>
-      </condition>
-      <volume>
-        <factor>1.2</factor>
-        <max>1.0</max>
-      </volume>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </guns>
-   
-    <!-- Toggle Switches -->
-    <click>
-      <name>Battery on</name>
-      <path>Sounds/click.wav</path>
-      <property>
-        <property>controls/electric/battery-switch</property>
-      </property>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
-
-    <click>
-      <name>Battery off</name>
-      <path>Sounds/click.wav</path>
-      <condition>
-        <not>
-          <property>controls/electric/battery-switch</property>
-        </not>
-      </condition>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
-
-    <click>
-      <name>mag off</name>
-      <path>Sounds/click.wav</path>
-      <condition>
-        <not>
-          <property>/controls/engines/engine/magnetos</property>
-        </not>
-      </condition>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
-
-    <click>
-      <name>mag 1</name>
-      <path>Sounds/click.wav</path>
-      <condition>
-        <equeals>
-          <property>/controls/engines/engine/magnetos</property>
-          <value>1</value>
-        </equeals>
-      </condition>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
-
-    <click>
-      <name>mag 2</name>
-      <path>Sounds/click.wav</path>
-      <condition>
-        <equeals>
-          <property>/controls/engines/engine/magnetos</property>
-          <value>2</value>
-        </equeals>
-      </condition>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
-
-    <click>
-      <name>mag 3</name>
-      <path>Sounds/click.wav</path>
-      <condition>
-        <equeals>
-          <property>/controls/engines/engine/magnetos</property>
-          <value>3</value>
-        </equeals>
-      </condition>
-      <volume>
-        <factor>1.0</factor>
-      </volume>
-    </click>
+    </rain>
 
   </fx>
- 
-</PropertyList>
 
+</PropertyList>

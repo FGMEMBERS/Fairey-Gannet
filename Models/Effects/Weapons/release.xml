@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <submodel> 
+    <name>bombe release</name>
+    <model>Aircraft/Fairey-Gannet/Models/Effects/Weapons/bomb.xml</model>
+    <condition>
+      <equals>
+        <property>/instrumentation/doors/passenger/position-norm</property>
+        <value>1</value>
+      </equals>
+    </condition>
+    <trigger>controls/signal</trigger>
+    <speed-prop>
+      <property>/velocities/airspeed-kt</property>
+    </speed-prop>
+    <repeat> false </repeat>
+    <delay>0.2</delay>
+    <count>1</count>
+    <x-offset> -5.1941511 </x-offset> <!-- -1.58310 m -->
+    <y-offset>  0.0000000 </y-offset> <!--  0.00000 m --> 
+    <z-offset> -3.9702397 </z-offset> <!-- -1.21007 m --> 
+    <yaw-offset>0</yaw-offset>
+    <pitch-offset>0</pitch-offset>
+    <cd>0.295</cd>
+    <eda>100</eda>
+    <weight>230</weight>
+    <wind>false</wind>
+    <buoyancy>0</buoyancy>
+    <life>1000</life>
+    <collision>true</collision>
+    <collision-report>sim/ai/aircraft/collision/bullet</collision-report>
+    <impact>true</impact>
+    <impact-report>sim/ai/aircraft/impact/bullet</impact-report>
+    <submodel-path>Aircraft/Fairey-Gannet/Models/Effects/Weapons/explosion.xml</submodel-path>
+  </submodel>
+
+</PropertyList>

@@ -8,7 +8,7 @@
     <aircraft-version>0.1</aircraft-version>
     <status>Alpha</status>
 
-    <fuel-fraction>0.8</fuel-fraction>
+    <fuel-fraction> 0.8 </fuel-fraction>
 
     <startup>
      <splash-texture>Aircraft/Fairey-Gannet/gannet-splash.png</splash-texture>
@@ -25,48 +25,52 @@
       </livery>
     </model>
 
-    <flaps>
-      <setting> 0.00 </setting> <!-- Cruise -->
-      <setting> 0.50 </setting> <!-- Half -->
-      <setting> 1.00 </setting> <!-- Full -->
-    </flaps>
-
-    <submodels> 
+    <submodels>
       <serviceable type="bool">true</serviceable>
-      <path>Aircraft/Fairey-Gannet/Models/Effects/guns/submodels.xml</path>
+      <path>Aircraft/Fairey-Gannet/Models/Effects/Weapons/release.xml</path>
     </submodels>
 
     <multiplay>
       <chat_display>1</chat_display>
       <generic> 
-        <int type="int" n="0">  0 </int>                                           <!--  0 immat -->
-        <int type="int" n="1">  0 </int>                                           <!--  1 immat -->
-        <int type="int" n="2">  0 </int>                                           <!--  2 immat -->
-        <int type="int" n="3">  0 </int>                                           <!--  3 immat -->
-        <int type="int" n="4">  0 </int>                                           <!--  4 immat -->
-        <int type="int" n="5">  0 </int>                                           <!--  5 immat -->
-        <int type="bool" n="6" alias="/smoke/active"> 0 </int>                     <!--  6 start smoke -->
-        <int type="int" n="7" alias="smoke/particlepersec"> 50 </int>              <!--  7 particlepersec -->
-        <int type="int" n="10" alias="controls/armament/trigger">0</int>           <!-- 10 reserved for bombable mode -->
+        <int type="int"  n="0">  0 </int>                                          <!--  0 immat -->
+        <int type="int"  n="1">  0 </int>                                          <!--  1 immat -->
+        <int type="int"  n="2">  0 </int>                                          <!--  2 immat -->
+        <int type="int"  n="3">  0 </int>                                          <!--  3 immat -->
+        <int type="int"  n="4">  0 </int>                                          <!--  4 immat -->
+        <int type="int"  n="5">  0 </int>                                          <!--  5 immat -->
+        <int type="bool" n="6" alias="controls/signal"> 1 </int>                   <!-- 6 smoke/bomb/torpedo -->
+        <int type="int"  n="7" alias="smoke/particlepersec"> 50 </int>             <!--  7 particlepersec -->
+        <int type="int"  n="10" alias="controls/armament/trigger">0</int>          <!-- 10 reserved for bombable mode -->
         <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
         <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
         <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
         <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
         <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
         <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+        <string n="9" type="string"/>                                              <!-- string[9] reserved for bombable mode -->
       </generic>
     </multiplay>
 
-    <help>
+   <flaps>
+     <setting> 0.00 </setting> <!-- Cruise -->
+     <setting> 0.50 </setting> <!-- Half -->
+     <setting> 1.00 </setting> <!-- Full -->
+   </flaps>
+
+   <help>
       <title>Fairey Gannet</title>
       <key>
         <name>d</name>
         <desc>Open/Close canopy</desc>
       </key>
       <key>
-        <name>e</name>
-        <desc>Guns fire</desc>
+        <name>D</name>
+        <desc>Open/Close bimb bay door</desc>
+      </key>
+      <key>
+        <name>Ctrl-j</name>
+        <desc>Release bomb</desc>
       </key>
       <key>
         <name>E</name>
@@ -82,19 +86,33 @@
 
   </sim>
 
-  <yasim>
-    <gannet>
-      <pilot-lb>180</pilot-lb>
-    </gannet>
-  </yasim>
-
   <surface-positions>
     <wing-fold-pos-norm alias="/instrumentation/doors/wings/position-norm" />
   </surface-positions>
  
+  <controls>
+    <engines>
+      <engine n="0">
+        <boost type="double">0</boost>
+        <magnetos>0</magnetos>
+      </engine>
+      <engine n="1">
+        <boost type="double">0</boost>
+        <magnetos>0</magnetos>
+      </engine>
+    </engines>
+  </controls>
+
   <engines>
-    <engine>
-      <rpm type="double">700</rpm>
+    <engine n="0">
+      <engine-num type="int">0</engine-num>
+      <rpm>500</rpm>
+      <running>false</running>
+    </engine>
+    <engine n="1">
+      <engine-num type="int">1</engine-num>
+      <rpm>500</rpm>
+      <running>false</running>
     </engine>
   </engines>
 
@@ -111,10 +129,12 @@
       <file>Aircraft/Fairey-Gannet/Nasal/liveries.nas</file>
       <file>Aircraft/Fairey-Gannet/Nasal/light.nas</file>
     </gannet>
+    <!--
     <guns>
       <file>Aircraft/Fairey-Gannet/Nasal/weapons.nas</file>
       <file>Aircraft/Fairey-Gannet/Nasal/revi.nas</file>
     </guns>
+    -->
   </nasal>
 
 </PropertyList>
