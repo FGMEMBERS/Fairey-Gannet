@@ -146,7 +146,6 @@
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
     <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
@@ -186,6 +185,46 @@
     <object-name>antenne</object-name>
     <object-name>ajout</object-name>
     <object-name>hook</object-name>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
+  </effect>
+
+  <effect>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <object-name>fuselage</object-name>
+    <object-name>porteAG1</object-name>
+    <object-name>porteAG2</object-name>
+    <object-name>porteAD1</object-name>
+    <object-name>porteAD2</object-name>
+    <object-name>baieG</object-name>
+    <object-name>baieD</object-name>
+    <object-name>ailesbase</object-name>
+    <object-name>ailescentreG</object-name>
+    <object-name>ailescentreD</object-name>
+    <object-name>ailesboutG</object-name>
+    <object-name>ailesboutD</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG1</object-name>
+    <object-name>voletG2</object-name>
+    <object-name>voletD1</object-name>
+    <object-name>voletD2</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>derives</object-name>
+    <object-name>direction</object-name>
+    <object-name>trousair</object-name>
+    <object-name>bol1</object-name>
+    <object-name>bol2</object-name>
+    <object-name>porteG</object-name>
+    <object-name>porteD</object-name>
+    <object-name>antenne</object-name>
+    <object-name>ajout</object-name>
+    <object-name>hook</object-name>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
   </effect>
 
   <animation>
@@ -205,11 +244,19 @@
     <object-name>vitres</object-name>
   </animation>
 
- <!-- Interieur -->
-  <model>
-    <name>Interieur</name>
-    <path>Aircraft/Fairey-Gannet/Models/Interior/interior.xml</path>
-  </model>
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitres</object-name>
+    <object-name>propblur1</object-name>
+    <object-name>propdisc1</object-name>
+    <object-name>propblur2</object-name>
+    <object-name>propdisc2</object-name>
+    <object-name>cables</object-name>
+  </effect>
 
   <!-- Une ombre pour OSG -->
   <model>
@@ -220,6 +267,18 @@
       <z-m> -2.2 </z-m>
     </offsets>
   </model>
+
+  <!-- Interieur -->
+  <model>
+    <name>Interieur</name>
+    <path>Aircraft/Fairey-Gannet/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- For Rembrandt -->
+  <animation>
+    <type>noshadow</type>
+    <object-name>Interieur</object-name>
+  </animation>
 
   <!-- Bombe -->
   <model>
@@ -443,6 +502,56 @@
     </axis>
   </animation>
 
+  <!-- Ajout des effets lumineux -->
+  <model>
+    <path>Aircraft/Fairey-Gannet/Models/light/beacon.xml</path>
+    <offsets>
+      <x-m>  4.79986 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  2.42920 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>LampeRouge</name>
+    <path>Aircraft/Fairey-Gannet/Models/light/RedLight.xml</path>
+    <offsets>
+      <x-m> -2.47284 </x-m>
+      <y-m> -8.30800 </y-m>
+      <z-m> -0.05742 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>LampeVerte</name>
+    <path>Aircraft/Fairey-Gannet/Models/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -2.47284 </x-m>
+      <y-m>  8.30800 </y-m>
+      <z-m> -0.05742 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>LampeGauche</name>
+    <path>Aircraft/Fairey-Gannet/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -2.44883 </x-m>
+      <y-m> -8.30800 </y-m>
+      <z-m> -0.05611 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>LampeDroite</name>
+    <path>Aircraft/Fairey-Gannet/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -2.44883 </x-m>
+      <y-m>  8.30800 </y-m>
+      <z-m> -0.05611 </z-m>
+    </offsets>
+  </model>
+
   <!-- Pliage des ailes -->
   <animation>
     <name>AileGauche</name>
@@ -452,6 +561,8 @@
     <object-name>voletG2</object-name>
     <object-name>trouscentreG</object-name>
     <object-name>trousboutG</object-name>
+    <object-name>LampeRouge</object-name>
+    <object-name>LampeGauche</object-name>
   </animation>
  
   <animation>
@@ -459,6 +570,8 @@
     <object-name>ailesboutG</object-name>
     <object-name>aileronG</object-name>
     <object-name>trousboutG</object-name>
+    <object-name>LampeRouge</object-name>
+    <object-name>LampeGauche</object-name>
   </animation>
  
   <animation>
@@ -509,6 +622,8 @@
     <object-name>voletD2</object-name>
     <object-name>trouscentreD</object-name>
     <object-name>trousboutD</object-name>
+    <object-name>LampeVerte</object-name>
+    <object-name>LampeDroite</object-name>
   </animation>
 
   <animation>
@@ -516,6 +631,8 @@
     <object-name>ailesboutD</object-name>
     <object-name>aileronD</object-name>
     <object-name>trousboutD</object-name>
+    <object-name>LampeVerte</object-name>
+    <object-name>LampeDroite</object-name>
   </animation>
  
   <animation>
