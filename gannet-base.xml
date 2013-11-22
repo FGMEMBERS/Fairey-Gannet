@@ -4,6 +4,7 @@
 
   <sim include="Nasal/views.xml">
 
+    <description>Fairey Gannet (Yasim)</description>
     <author>BARANGER Emmanuel (3D/FDM)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>Alpha</status>
@@ -33,22 +34,28 @@
     <multiplay>
       <chat_display>1</chat_display>
       <generic> 
-        <int type="int"  n="0">  0 </int>                                          <!--  0 immat -->
-        <int type="int"  n="1">  0 </int>                                          <!--  1 immat -->
-        <int type="int"  n="2">  0 </int>                                          <!--  2 immat -->
-        <int type="int"  n="3">  0 </int>                                          <!--  3 immat -->
-        <int type="int"  n="4">  0 </int>                                          <!--  4 immat -->
-        <int type="int"  n="5">  0 </int>                                          <!--  5 immat -->
-        <int type="bool" n="6" alias="controls/signal"> 1 </int>                   <!-- 6 smoke/bomb/torpedo -->
-        <int type="int"  n="7" alias="smoke/particlepersec"> 50 </int>             <!--  7 particlepersec -->
-        <int type="int"  n="10" alias="controls/armament/trigger">0</int>          <!-- 10 reserved for bombable mode -->
-        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
-        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
-        <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
-        <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
-        <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
-        <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <string n="9" type="string"/>                                              <!-- string[9] reserved for bombable mode -->
+        <int type="int" n="0">  0 </int>                                      <!-- 0 immat -->
+        <int type="int" n="1">  0 </int>                                      <!-- 1 immat -->
+        <int type="int" n="2">  0 </int>                                      <!-- 2 immat -->
+        <int type="int" n="3">  0 </int>                                      <!-- 3 immat -->
+        <int type="int" n="4">  0 </int>                                      <!-- 4 immat -->
+        <int type="int" n="5">  0 </int>                                      <!-- 5 immat -->
+        <int type="bool" n="6"> 1 </int>                                      <!-- 6 smoke/bomb/torpedo -->
+        <int type="int" n="7">  0 </int>                                      <!-- 7 color -->
+        <int n="8" alias="/systems/electrical/outputs/nav-lights">  0 </int>  <!-- 8 nav-lights -->
+        <int n="9" alias="/sim/model/lights/beacon/state">  false </int>      <!-- 9 strobe-lights -->
+        <int n="10" alias="/controls/electric/key-pos">  0 </int>             <!-- 10 key position -->
+        <float n="0" alias="/sim/model/door-positions/crew/position-norm"/>
+        <float n="1" alias="/sim/model/door-positions/passenger/position-norm"/>  
+        <float n="2" alias="/position/gear-agl-m">  0 </float>                <!-- 2 altitude for MP shadow -->
+        <float n="3" alias="/position/altitude-ft">  0 </float>               <!-- 3 altitude for trail -->
+        <float n="4" alias="/sim/model/door-positions/wings/position-norm"/>  
+        <float n="6" alias="/engines/engine[0]/rpm" />
+        <float n="7" alias="/engines/engine[1]/rpm" />
+        <float n="8" alias="/engines/engine[0]/cranking" />
+        <float n="9" alias="/engines/engine[1]/cranking" />
+        <string n="0" type="string" />
+        <string n="9" type="string" />                                        <!-- string[9] reserved for bombable mode -->
       </generic>
     </multiplay>
 
@@ -106,12 +113,12 @@
   <engines>
     <engine n="0">
       <engine-num type="int">0</engine-num>
-      <rpm>500</rpm>
+      <rpm>2</rpm>
       <running>false</running>
     </engine>
     <engine n="1">
       <engine-num type="int">1</engine-num>
-      <rpm>500</rpm>
+      <rpm>2</rpm>
       <running>false</running>
     </engine>
   </engines>
@@ -129,6 +136,12 @@
       <file>Aircraft/Fairey-Gannet/Nasal/liveries.nas</file>
       <file>Aircraft/Fairey-Gannet/Nasal/light.nas</file>
     </gannet>
+    <!--
+    <engines>
+      <file>Aircraft/Generic/Engines/generic-yasim-engine.nas</file>
+      <file>Aircraft/Fairey-Gannet/Nasal/engines-yasim.nas</file>
+    </engines>
+    -->
     <!--
     <guns>
       <file>Aircraft/Fairey-Gannet/Nasal/weapons.nas</file>

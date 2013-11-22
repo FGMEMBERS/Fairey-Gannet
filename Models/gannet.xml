@@ -59,8 +59,10 @@
     <object-name>antenne</object-name>
     <object-name>ajout</object-name>
     <object-name>hook</object-name>
-
+    <object-name>canopy</object-name>
+    
     <object-name>trous</object-name>
+    <object-name>cables</object-name>
     <object-name>trousboutG</object-name>
     <object-name>trouscentreG</object-name>
     <object-name>trousboutD</object-name>
@@ -80,11 +82,11 @@
 
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
+    <object-name>vitrecanopy</object-name>
     <object-name>propblur1</object-name>
     <object-name>propdisc1</object-name>
     <object-name>propblur2</object-name>
     <object-name>propdisc2</object-name>
-    <object-name>cables</object-name>
   </animation>
 
   <animation>
@@ -119,8 +121,10 @@
     <object-name>antenne</object-name>
     <object-name>ajout</object-name>
     <object-name>hook</object-name>
-
+    <object-name>canopy</object-name>
+    
     <object-name>trous</object-name>
+    <object-name>cables</object-name>
     <object-name>trousboutG</object-name>
     <object-name>trouscentreG</object-name>
     <object-name>trousboutD</object-name>
@@ -155,6 +159,9 @@
 
   <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
     <object-name>fuselage</object-name>
     <object-name>porteAG1</object-name>
     <object-name>porteAG2</object-name>
@@ -185,13 +192,14 @@
     <object-name>antenne</object-name>
     <object-name>ajout</object-name>
     <object-name>hook</object-name>
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
+    <object-name>canopy</object-name>
   </effect>
 
   <effect>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
     <object-name>fuselage</object-name>
     <object-name>porteAG1</object-name>
     <object-name>porteAG2</object-name>
@@ -222,19 +230,17 @@
     <object-name>antenne</object-name>
     <object-name>ajout</object-name>
     <object-name>hook</object-name>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
+    <object-name>canopy</object-name>
   </effect>
 
   <animation>
     <type>noshadow</type>
     <object-name>vitres</object-name>
+    <object-name>vitrecanopy</object-name>
     <object-name>propblur1</object-name>
     <object-name>propdisc1</object-name>
     <object-name>propblur2</object-name>
     <object-name>propdisc2</object-name>
-    <object-name>cables</object-name>
   </animation>
 
   <animation>
@@ -242,6 +248,7 @@
     <shader>chrome</shader>
     <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
     <object-name>vitres</object-name>
+    <object-name>vitrecanopy</object-name>
   </animation>
 
   <!-- working for Rembrandt -->
@@ -251,11 +258,11 @@
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
     <object-name>vitres</object-name>
+    <object-name>vitrecanopy</object-name>
     <object-name>propblur1</object-name>
     <object-name>propdisc1</object-name>
     <object-name>propblur2</object-name>
     <object-name>propdisc2</object-name>
-    <object-name>cables</object-name>
   </effect>
 
   <!-- Une ombre pour OSG -->
@@ -422,6 +429,12 @@
   <animation>
     <type>spin</type>
     <object-name>HeliceComplete1</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 20 </value>
+      </greater-than>
+    </condition>
     <property>engines/engine[0]/rpm</property>
     <factor> 1 </factor>
     <center>
@@ -451,7 +464,7 @@
     <object-name>propdisc2</object-name>
     <condition>
       <greater-than>
-        <property>engines/engine[0]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <value>900</value>
       </greater-than>
     </condition>
@@ -463,11 +476,11 @@
     <condition>
     <and>
       <greater-than>
-        <property>engines/engine[0]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <value>300.000</value>
       </greater-than>
       <less-than>
-        <property>engines/engine[0]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <value>900.001</value>
       </less-than>
     </and>
@@ -479,7 +492,7 @@
     <object-name>helice2</object-name>
     <condition>
       <less-than>
-        <property>engines/engine[0]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
 	<value>900</value>
       </less-than>
     </condition>
@@ -488,7 +501,13 @@
   <animation>
     <type>spin</type>
     <object-name>HeliceComplete2</object-name>
-    <property>engines/engine[0]/rpm</property>
+    <condition>
+      <greater-than>
+        <property>engines/engine[1]/rpm</property>
+        <value> 20 </value>
+      </greater-than>
+    </condition>
+    <property>engines/engine[1]/rpm</property>
     <factor> 1 </factor>
     <center>
       <x-m> -6.01425 </x-m>
@@ -575,9 +594,24 @@
   </animation>
  
   <animation>
+    <type>pick</type>
+    <object-name>BoutAileGauche</object-name>
+    <object-name>AileGauche</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.wings.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>BoutAileGauche</object-name>
-    <property>instrumentation/doors/wings/position-norm</property>
+    <property>/sim/multiplay/generic/float[4]</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>   0 </dep></entry>
       <entry><ind> 1 </ind><dep> 133 </dep></entry>
@@ -597,7 +631,7 @@
   <animation>
     <type>rotate</type>
     <object-name>AileGauche</object-name>
-    <property>instrumentation/doors/wings/position-norm</property>
+    <property>/sim/multiplay/generic/float[4]</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>    0 </dep></entry>
       <entry><ind> 1 </ind><dep> -144 </dep></entry>
@@ -636,9 +670,24 @@
   </animation>
  
   <animation>
+    <type>pick</type>
+    <object-name>BoutAileDroite</object-name>
+    <object-name>AileDroite</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.wings.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>BoutAileDroite</object-name>
-    <property>instrumentation/doors/wings/position-norm</property>
+    <property>/sim/multiplay/generic/float[4]</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>    0 </dep></entry>
       <entry><ind> 1 </ind><dep> -133 </dep></entry>
@@ -658,7 +707,7 @@
   <animation>
     <type>rotate</type>
     <object-name>AileDroite</object-name>
-    <property>instrumentation/doors/wings/position-norm</property>
+    <property>/sim/multiplay/generic/float[4]</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>   0 </dep></entry>
       <entry><ind> 1 </ind><dep> 144 </dep></entry>
@@ -1230,11 +1279,79 @@
     </axis>
   </animation>
 
+  <!-- Animation de la verrière -->
+  <animation>
+    <name>LaVerriere</name>
+    <object-name>canopy</object-name>
+    <object-name>vitrecanopy</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>LaVerriere</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>LaVerriere</object-name>
+    <property>/sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.04 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.04 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>LaVerriere</object-name>
+    <property>/sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.56 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
   <!-- Animation des portes de la soute -->
+  <animation>
+    <type>pick</type>
+    <object-name>baieG</object-name>
+    <object-name>baieD</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.passenger.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
   <animation>
     <type>rotate</type>
     <object-name>baieG</object-name>
-    <property>instrumentation/doors/passenger/position-norm</property>
+    <property>/sim/multiplay/generic/float[1]</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep>   0 </dep></entry>
       <entry><ind> 0.5 </ind><dep> -50 </dep></entry>
@@ -1253,7 +1370,7 @@
   <animation>
     <type>rotate</type>
     <object-name>baieD</object-name>
-    <property>instrumentation/doors/passenger/position-norm</property>
+    <property>/sim/multiplay/generic/float[1]</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep>   0 </dep></entry>
       <entry><ind> 0.5 </ind><dep> -50 </dep></entry>

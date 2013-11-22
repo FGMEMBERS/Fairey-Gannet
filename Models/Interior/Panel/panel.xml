@@ -81,4 +81,14 @@
     </offsets>
   </model>
 
+  <!-- FUEL PRESSURE -->
+  <model>
+    <path>Aircraft/Fairey-Gannet/Models/Interior/Panel/Instruments/fp/fuelpsi.xml</path>
+    <offsets>
+      <x-m> -0.001 </x-m>
+      <y-m>  0.205 </y-m>
+      <z-m> -0.135 </z-m>
+    </offsets>
+  </model>
+
 </PropertyList>

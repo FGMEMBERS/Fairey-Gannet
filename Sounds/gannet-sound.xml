@@ -6,55 +6,29 @@
  
     <!-- Moteur 1 -->
     <crank>
-      <name>engstart</name>
+      <name>cough</name>
       <path>Aircraft/Fairey-Gannet/Sounds/starter.wav</path>
-      <property>/engines/engine[0]/cranking</property>
-      <volume> 
-        <property>/orientation/alpha-deg</property>
-        <type>log</type>
-        <min>0.5</min>
-        <max>1.0</max>
+      <property>/engines/engine[0]/running</property>
+      <volume>
+        <offset>-0.50</offset>
       </volume>
-      <volume> 
-        <factor>1.2</factor>
-        <max>1.0</max>
-      </volume>
+      <pitch>
+        <property>/engines/engine[0]/running</property>
+        <factor>1.0</factor>
+      </pitch>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </crank>
 
     <engine>
-      <name>engine</name>
-      <mode>looped</mode>
-      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
-      <property>/engines/engine[0]/running</property>
-      <volume> 
-        <property>/orientation/alpha-deg</property>
-        <type>log</type>
-        <min>0.5</min>
-        <max>1.0</max>
-      </volume>
-      <volume> 
-        <factor>1.2</factor>
-        <max>1.0</max>
-      </volume>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
-
-    <engine>
       <name>enginerun</name>
       <mode>looped</mode>
       <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
-      <condition> 
+      <condition>
         <property>/engines/engine[0]/running</property>
-        <less-than> 
+        <greater-than>
           <property>/engines/engine[0]/rpm</property>
-          <value>900</value>
-        </less-than>
-        <greater-than> 
-          <property>/engines/engine[0]/rpm</property>
-          <value>150</value>
+          <value>3</value>
         </greater-than>
       </condition>
       <volume> 
@@ -70,7 +44,7 @@
       </volume>
       <pitch> 
         <property>/engines/engine[0]/rpm</property>
-        <factor>0.0009496</factor>
+        <factor>0.0003</factor>
         <min>0.6</min>
         <max>2.0</max>
         <offset>0</offset>
@@ -81,55 +55,29 @@
 
     <!-- Moteur 2 -->
     <crank>
-      <name>engstart</name>
+      <name>cough</name>
       <path>Aircraft/Fairey-Gannet/Sounds/starter.wav</path>
-      <property>/engines/engine[1]/cranking</property>
-      <volume> 
-        <property>/orientation/alpha-deg</property>
-        <type>log</type>
-        <min>0.5</min>
-        <max>1.0</max>
+      <property>/engines/engine[1]/running</property>
+      <volume>
+        <offset>-0.50</offset>
       </volume>
-      <volume> 
-        <factor>1.2</factor>
-        <max>1.0</max>
-      </volume>
+      <pitch>
+        <property>/engines/engine[1]/running</property>
+        <factor>1.0</factor>
+      </pitch>
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </crank>
 
     <engine>
-      <name>engine</name>
-      <mode>looped</mode>
-      <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
-      <property>/engines/engine[1]/running</property>
-      <volume> 
-        <property>/orientation/alpha-deg</property>
-        <type>log</type>
-        <min>0.5</min>
-        <max>1.0</max>
-      </volume>
-      <volume> 
-        <factor>1.2</factor>
-        <max>1.0</max>
-      </volume>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
-
-    <engine>
       <name>enginerun</name>
       <mode>looped</mode>
       <path>Aircraft/Fairey-Gannet/Sounds/running.wav</path>
-      <condition> 
+      <condition>
         <property>/engines/engine[1]/running</property>
-        <less-than> 
+        <greater-than>
           <property>/engines/engine[1]/rpm</property>
-          <value>900</value>
-        </less-than>
-        <greater-than> 
-          <property>/engines/engine[1]/rpm</property>
-          <value>150</value>
+          <value>3</value>
         </greater-than>
       </condition>
       <volume> 
@@ -145,7 +93,7 @@
       </volume>
       <pitch> 
         <property>/engines/engine[1]/rpm</property>
-        <factor>0.0009496</factor>
+        <factor>0.0003</factor>
         <min>0.6</min>
         <max>2.0</max>
         <offset>0</offset>
@@ -295,7 +243,7 @@
     </door>
 
     <door>
-      <name>Passenger door</name>
+      <name>Bomb bay door</name>
       <path>Sounds/door_close.wav</path>
       <condition>
         <equals>

@@ -7,7 +7,7 @@
     <desc>Bomber bay</desc>
     <binding>
       <command>nasal</command>
-      <script>doors.doorsystem.passengerexport();</script>
+      <script>doors.passenger.toggle();</script>
     </binding>
   </key>
  
@@ -16,10 +16,19 @@
     <desc>Crew door</desc>
     <binding>
       <command>nasal</command>
-      <script>doors.doorsystem.crewexport();</script>
+      <script>doors.crew.toggle();</script>
     </binding>
   </key>
  
+  <key n="69">
+    <name>E</name>
+    <desc>Wings</desc>
+    <binding>
+      <command>nasal</command>
+      <script>doors.wings.toggle();</script>
+    </binding>
+  </key>
+  
   <key n="10">
     <name>Ctrl-j</name>
     <binding>
@@ -29,15 +38,7 @@
     </binding>
   </key>
 
-  <key n="69">
-    <name>E</name>
-    <desc>Wings</desc>
-    <binding>
-      <command>nasal</command>
-      <script>doors.doorsystem.wingsexport();</script>
-    </binding>
-  </key>
- 
+<!--
   <key n="101">
     <name>e</name>
     <desc>Guns</desc>
@@ -52,7 +53,17 @@
       </binding>
     </mod-up>
   </key>
-
+-->
+  <!--
+  <key n="125">
+    <name>}</name>
+    <desc>Engine Autostart</desc>
+    <binding>
+      <command>nasal</command>
+      <script>engines.autostart();</script>
+    </binding>
+  </key>
+  -->
   <!-- Input/Keyboard/Carrier-bindings.xml here for the moment -->
   <!-- map keys for catapult launch -->
   <key n="67"> 
