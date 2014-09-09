@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>interior.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>interieur</object-name>
+    <object-name>inttour</object-name>
+    <object-name>intcanopy</object-name>
+    <object-name>cloison</object-name>
+    
+    <!-- Objets transparents -->
+    <object-name>intvitres</object-name>
+    <object-name>intvitrecanopy</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>intvitres</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>intvitres</object-name>
+  </animation>
+
+  <!-- Pilote -->
+  <model>
+    <path>Aircraft/Fairey-Gannet/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m> -3.86 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m>  0.53 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Tableau de bord -->
+  <model>
+    <path>Aircraft/Fairey-Gannet/Models/Interior/Panel/panel.xml</path>
+    <offsets>
+      <x-m> -4.53284 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.70209 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Animation de la verrière -->
+  <animation>
+    <name>IntLaVerriere</name>
+    <object-name>intcanopy</object-name>
+    <object-name>intvitrecanopy</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>IntLaVerriere</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntLaVerriere</object-name>
+    <property>/sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.04 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.04 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntLaVerriere</object-name>
+    <property>/sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.56 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
